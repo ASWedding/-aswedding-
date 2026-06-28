@@ -142,3 +142,4 @@ lightbox.addEventListener("click", e => {
     }
 
 });
+alert("Script çalıştı");
