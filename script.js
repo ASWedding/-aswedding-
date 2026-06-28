@@ -1,29 +1,35 @@
-
-window.addEventListener("load", function () {
-    setTimeout(function () {
+window.addEventListener("load", () => {
+    setTimeout(() => {
         document.getElementById("loader").classList.add("hide");
     }, 1200);
 });
 
-const content = document.getElementById("content");
+const mainContent = document.getElementById("mainContent");
+const openBtn = document.getElementById("openBtn");
+
 const music = document.getElementById("music");
 const musicBtn = document.getElementById("musicBtn");
 
-function openInvitation() {
+let countdownStarted = false;
 
-    content.classList.add("show");
+openBtn.addEventListener("click", () => {
 
-    content.scrollIntoView({
+    mainContent.classList.add("show");
+
+    mainContent.scrollIntoView({
         behavior: "smooth"
     });
 
     music.play().catch(() => {});
 
-    startCountdown();
+    if (!countdownStarted) {
+        countdownStarted = true;
+        startCountdown();
+    }
 
-}
+});
 
-musicBtn.addEventListener("click", function () {
+musicBtn.addEventListener("click", () => {
 
     if (music.paused) {
 
@@ -33,29 +39,32 @@ musicBtn.addEventListener("click", function () {
     } else {
 
         music.pause();
-        musicBtn.innerHTML = "🔇";
+        musicBtn.innerHTML = "🎵";
 
     }
 
 });
 
-const targetDate = new Date("July 26, 2026 20:00:00").getTime();
-
-let started = false;
-
 function startCountdown() {
 
-    if (started) return;
+    const weddingDate = new Date("2026-07-26T20:00:00").getTime();
 
-    started = true;
-
-    setInterval(function () {
+    setInterval(() => {
 
         const now = new Date().getTime();
 
-        const distance = targetDate - now;
+        const distance = weddingDate - now;
 
-        if (distance < 0) return;
+        if (distance <= 0) {
+
+            document.getElementById("days").textContent = "00";
+            document.getElementById("hours").textContent = "00";
+            document.getElementById("minutes").textContent = "00";
+            document.getElementById("seconds").textContent = "00";
+
+            return;
+
+        }
 
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
@@ -65,32 +74,32 @@ function startCountdown() {
 
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById("days").innerHTML = days.toString().padStart(2, "0");
-        document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0");
-        document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0");
-        document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, "0");
+        document.getElementById("days").textContent = String(days).padStart(2, "0");
+        document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+        document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
 
     }, 1000);
 
 }
 
-const topButton = document.getElementById("topButton");
+const topBtn = document.getElementById("topBtn");
 
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
 
     if (window.scrollY > 400) {
 
-        topButton.style.display = "block";
+        topBtn.style.display = "block";
 
     } else {
 
-        topButton.style.display = "none";
+        topBtn.style.display = "none";
 
     }
 
 });
 
-topButton.addEventListener("click", function () {
+topBtn.addEventListener("click", () => {
 
     window.scrollTo({
 
@@ -102,14 +111,34 @@ topButton.addEventListener("click", function () {
 
 });
 
-const gallery = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const closeLightbox = document.getElementById("closeLightbox");
 
-gallery.forEach(function (img) {
+document.querySelectorAll(".gallery img").forEach(img => {
 
-    img.addEventListener("click", function () {
+    img.addEventListener("click", () => {
 
-        window.open(img.src, "_blank");
+        lightbox.classList.add("active");
+
+        lightboxImg.src = img.src;
 
     });
+
+});
+
+closeLightbox.addEventListener("click", () => {
+
+    lightbox.classList.remove("active");
+
+});
+
+lightbox.addEventListener("click", e => {
+
+    if (e.target === lightbox) {
+
+        lightbox.classList.remove("active");
+
+    }
 
 });
