@@ -1,45 +1,174 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS Wedding</title>
 
-<title>Ayşenur & Şaban</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="hero">
-
-<div class="logo">
-<h1>AS</h1>
-<p>Söz & Nişan</p>
+<div class="loading" id="loading">
+    <div class="loader"></div>
 </div>
 
-<div class="envelope" id="envelope">
+<section class="hero">
 
-<div class="cover"></div>
+    <div class="overlay"></div>
 
-<div class="letter">
+    <div class="content">
 
-<h2>Ayşenur & Şaban</h2>
+        <p class="welcome">Wedding Invitation</p>
 
-<p>26 Temmuz 2026</p>
+        <h1 class="names">
+            Ayşenur
+            <span>&</span>
+            Samet
+        </h1>
 
-<p>20:00</p>
+        <p class="date">
+            08 Ağustos 2026
+        </p>
 
-<button onclick="openInvite()">
-Davetiyeyi Aç
-</button>
+        <button class="open-btn" onclick="openInvite()">
+            Davetiyeyi Aç
+        </button>
 
-</div>
+    </div>
 
-</div>
+</section>
 
-</div>
+<section id="invitation" class="invitation">
+
+    <div class="card">
+
+        <h2>Hoş Geldiniz</h2>
+
+        <p>
+            Hayatımızın en özel gününde sizleri de aramızda görmekten büyük mutluluk duyarız.
+        </p>
+
+    </div>
+
+    <div class="countdown">
+
+        <h2>Geri Sayım</h2>
+
+        <div class="timer">
+
+            <div>
+                <span id="days">00</span>
+                <small>Gün</small>
+            </div>
+
+            <div>
+                <span id="hours">00</span>
+                <small>Saat</small>
+            </div>
+
+            <div>
+                <span id="minutes">00</span>
+                <small>Dakika</small>
+            </div>
+
+            <div>
+                <span id="seconds">00</span>
+                <small>Saniye</small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="story">
+
+        <h2>Hikayemiz</h2>
+
+        <p>
+            İki farklı yol, tek bir kalpte buluştu...
+            Sevgiyle başlayan bu yolculuğu sizlerle birlikte taçlandırmak istiyoruz.
+        </p>
+
+    </div>
+
+    <div class="details">
+
+        <h2>Düğün Bilgileri</h2>
+
+        <div class="detail-box">
+
+            <h3>Tarih</h3>
+            <p>08 Ağustos 2026</p>
+
+        </div>
+
+        <div class="detail-box">
+
+            <h3>Saat</h3>
+            <p>19:00</p>
+
+        </div>
+
+        <div class="detail-box">
+
+            <h3>Yer</h3>
+            <p>Salon Adı</p>
+
+        </div>
+
+    </div>
+
+    <div class="gallery">
+
+        <h2>Galeri</h2>
+
+        <div class="photos">
+
+            <img src="images/1.jpg" alt="">
+            <img src="images/2.jpg" alt="">
+            <img src="images/3.jpg" alt="">
+            <img src="images/4.jpg" alt="">
+
+        </div>
+
+    </div>
+
+    <div class="location">
+
+        <h2>Konum</h2>
+
+        <a href="#" target="_blank" class="map-btn">
+            Haritada Aç
+        </a>
+
+    </div>
+
+    <div class="qr">
+
+        <h2>QR Kod</h2>
+
+        <img src="images/qr.png" alt="QR">
+
+    </div>
+
+    <footer>
+
+        <h3>Ayşenur & Samet</h3>
+
+        <p>
+            Sevgiyle...
+        </p>
+
+    </footer>
+
+</section>
 
 <script src="script.js"></script>
 
