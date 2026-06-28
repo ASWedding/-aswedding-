@@ -1,105 +1,96 @@
 window.addEventListener("load", () => {
+
     setTimeout(() => {
         document.getElementById("loader").classList.add("hide");
     }, 1200);
+
 });
 
-const mainContent = document.getElementById("mainContent");
-const openBtn = document.getElementById("openBtn");
+const site = document.getElementById("site");
+const openInvitation = document.getElementById("openInvitation");
 
 const music = document.getElementById("music");
-const musicBtn = document.getElementById("musicBtn");
+const musicButton = document.getElementById("musicButton");
 
-let countdownStarted = false;
+let musicPlaying = false;
 
-openBtn.addEventListener("click", () => {
+musicButton.addEventListener("click", () => {
 
-    mainContent.classList.add("show");
+    if (musicPlaying) {
 
-    mainContent.scrollIntoView({
-        behavior: "smooth"
-    });
-
-    music.play().catch(() => {});
-
-    if (!countdownStarted) {
-        countdownStarted = true;
-        startCountdown();
-    }
-
-});
-
-musicBtn.addEventListener("click", () => {
-
-    if (music.paused) {
-
-        music.play();
-        musicBtn.innerHTML = "🔊";
+        music.pause();
+        musicButton.innerHTML = "🎵";
+        musicPlaying = false;
 
     } else {
 
-        music.pause();
-        musicBtn.innerHTML = "🎵";
+        music.play().catch(() => {});
+        musicButton.innerHTML = "⏸";
+        musicPlaying = true;
 
     }
 
 });
 
-function startCountdown() {
+openInvitation.addEventListener("click", () => {
 
-    const weddingDate = new Date("2026-07-26T20:00:00").getTime();
+    site.classList.add("show");
 
-    setInterval(() => {
+    site.scrollIntoView({
+        behavior: "smooth"
+    });
 
-        const now = new Date().getTime();
+    if (!musicPlaying) {
 
-        const distance = weddingDate - now;
+        music.play().catch(() => {});
+        musicButton.innerHTML = "⏸";
+        musicPlaying = true;
 
-        if (distance <= 0) {
+    }
 
-            document.getElementById("days").textContent = "00";
-            document.getElementById("hours").textContent = "00";
-            document.getElementById("minutes").textContent = "00";
-            document.getElementById("seconds").textContent = "00";
+});
 
-            return;
+const weddingDate = new Date("2026-07-26T20:00:00").getTime();
 
-        }
+setInterval(() => {
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const now = new Date().getTime();
 
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const distance = weddingDate - now;
 
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    if (distance < 0) return;
 
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("days").innerHTML =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
 
-        document.getElementById("days").textContent = String(days).padStart(2, "0");
-        document.getElementById("hours").textContent = String(hours).padStart(2, "0");
-        document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
-        document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    document.getElementById("hours").innerHTML =
+        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-    }, 1000);
+    document.getElementById("minutes").innerHTML =
+        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-}
+    document.getElementById("seconds").innerHTML =
+        Math.floor((distance % (1000 * 60)) / 1000);
 
-const topBtn = document.getElementById("topBtn");
+}, 1000);
+
+const topButton = document.getElementById("topButton");
 
 window.addEventListener("scroll", () => {
 
     if (window.scrollY > 400) {
 
-        topBtn.style.display = "block";
+        topButton.style.display = "block";
 
     } else {
 
-        topBtn.style.display = "none";
+        topButton.style.display = "none";
 
     }
 
 });
 
-topBtn.addEventListener("click", () => {
+topButton.addEventListener("click", () => {
 
     window.scrollTo({
 
@@ -111,35 +102,26 @@ topBtn.addEventListener("click", () => {
 
 });
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const closeLightbox = document.getElementById("closeLightbox");
+document.getElementById("rsvpForm").addEventListener("submit", e => {
 
-document.querySelectorAll(".gallery img").forEach(img => {
+    e.preventDefault();
 
-    img.addEventListener("click", () => {
-
-        lightbox.classList.add("active");
-
-        lightboxImg.src = img.src;
-
-    });
+    alert("Katılım bilgileriniz kaydedildi. Teşekkür ederiz. ❤️");
 
 });
 
-closeLightbox.addEventListener("click", () => {
+document.getElementById("messageForm").addEventListener("submit", e => {
 
-    lightbox.classList.remove("active");
+    e.preventDefault();
 
-});
-
-lightbox.addEventListener("click", e => {
-
-    if (e.target === lightbox) {
-
-        lightbox.classList.remove("active");
-
-    }
+    alert("Güzel dilekleriniz için teşekkür ederiz. ❤️");
 
 });
-alert("Script çalıştı");
+
+document.getElementById("uploadButton").addEventListener("click", e => {
+
+    e.preventDefault();
+
+    alert("Fotoğraf yükleme alanı, Google Form bağlantısı eklendiğinde aktif olacaktır.");
+
+});
