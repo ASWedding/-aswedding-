@@ -1,297 +1,115 @@
-/* =========================
-COUNTDOWN
-========================= */
 
-.countdown{
+window.addEventListener("load", function () {
+    setTimeout(function () {
+        document.getElementById("loader").classList.add("hide");
+    }, 1200);
+});
 
-display:grid;
+const content = document.getElementById("content");
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
 
-grid-template-columns:repeat(4,1fr);
+function openInvitation() {
 
-gap:25px;
+    content.classList.add("show");
 
-margin-top:40px;
+    content.scrollIntoView({
+        behavior: "smooth"
+    });
 
-}
+    music.play().catch(() => {});
 
-.countdown div{
-
-background:white;
-
-padding:30px 20px;
-
-border-radius:25px;
-
-box-shadow:0 12px 25px rgba(0,0,0,.08);
-
-transition:.35s;
+    startCountdown();
 
 }
 
-.countdown div:hover{
+musicBtn.addEventListener("click", function () {
 
-transform:translateY(-8px);
+    if (music.paused) {
 
-}
+        music.play();
+        musicBtn.innerHTML = "🔊";
 
-.countdown span{
+    } else {
 
-display:block;
+        music.pause();
+        musicBtn.innerHTML = "🔇";
 
-font-size:55px;
+    }
 
-font-weight:700;
+});
 
-color:#b68a5b;
+const targetDate = new Date("July 26, 2026 20:00:00").getTime();
 
-margin-bottom:10px;
+let started = false;
 
-}
+function startCountdown() {
 
-.countdown small{
+    if (started) return;
 
-font-size:16px;
+    started = true;
 
-color:#777;
+    setInterval(function () {
 
-}
+        const now = new Date().getTime();
 
-/* =========================
-INFO
-========================= */
+        const distance = targetDate - now;
 
-.info{
+        if (distance < 0) return;
 
-display:grid;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-grid-template-columns:repeat(3,1fr);
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-gap:25px;
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-margin-top:40px;
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-}
+        document.getElementById("days").innerHTML = days.toString().padStart(2, "0");
+        document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0");
+        document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0");
+        document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, "0");
 
-.info div{
-
-background:white;
-
-padding:35px;
-
-border-radius:25px;
-
-text-align:center;
-
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-transition:.35s;
+    }, 1000);
 
 }
 
-.info div:hover{
+const topButton = document.getElementById("topButton");
 
-transform:translateY(-8px);
+window.addEventListener("scroll", function () {
 
-}
+    if (window.scrollY > 400) {
 
-.info h3{
+        topButton.style.display = "block";
 
-font-size:24px;
+    } else {
 
-color:#b68a5b;
+        topButton.style.display = "none";
 
-margin-bottom:15px;
+    }
 
-}
+});
 
-.info p{
+topButton.addEventListener("click", function () {
 
-font-size:18px;
+    window.scrollTo({
 
-}
+        top: 0,
 
-/* =========================
-GALLERY
-========================= */
+        behavior: "smooth"
 
-.gallery{
+    });
 
-display:grid;
+});
 
-grid-template-columns:repeat(3,1fr);
+const gallery = document.querySelectorAll(".gallery img");
 
-gap:20px;
+gallery.forEach(function (img) {
 
-margin-top:40px;
+    img.addEventListener("click", function () {
 
-}
+        window.open(img.src, "_blank");
 
-.gallery img{
+    });
 
-width:100%;
-
-height:320px;
-
-object-fit:cover;
-
-border-radius:22px;
-
-cursor:pointer;
-
-transition:.4s;
-
-box-shadow:0 15px 30px rgba(0,0,0,.12);
-
-}
-
-.gallery img:hover{
-
-transform:scale(1.05);
-
-box-shadow:0 25px 45px rgba(0,0,0,.18);
-
-}
-
-/* =========================
-MAP
-========================= */
-
-.mapButton{
-
-display:inline-block;
-
-margin-top:20px;
-
-padding:18px 45px;
-
-background:#b68a5b;
-
-color:white;
-
-text-decoration:none;
-
-font-size:18px;
-
-border-radius:50px;
-
-transition:.35s;
-
-}
-
-.mapButton:hover{
-
-background:#a47748;
-
-transform:translateY(-5px);
-
-}
-
-/* =========================
-QR
-========================= */
-
-.qr{
-
-display:block;
-
-margin:30px auto;
-
-width:230px;
-
-max-width:90%;
-
-border-radius:18px;
-
-box-shadow:0 15px 35px rgba(0,0,0,.12);
-
-transition:.35s;
-
-}
-
-.qr:hover{
-
-transform:scale(1.05);
-
-}
-
-/* =========================
-FOOTER
-========================= */
-
-footer{
-
-margin-top:80px;
-
-padding:80px 20px;
-
-background:#f4eee7;
-
-text-align:center;
-
-}
-
-footer h2{
-
-font-family:'Great Vibes',cursive;
-
-font-size:70px;
-
-color:#b68a5b;
-
-margin-bottom:15px;
-
-}
-
-footer p{
-
-font-size:18px;
-
-color:#666;
-
-letter-spacing:2px;
-
-}
-
-/* =========================
-TOP BUTTON
-========================= */
-
-#topButton{
-
-position:fixed;
-
-right:25px;
-
-bottom:95px;
-
-width:55px;
-
-height:55px;
-
-border:none;
-
-border-radius:50%;
-
-background:#b68a5b;
-
-color:white;
-
-font-size:24px;
-
-cursor:pointer;
-
-display:none;
-
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-
-transition:.35s;
-
-z-index:999;
-
-}
-
-#topButton:hover{
-
-transform:translateY(-5px);
-
- }
+});
