@@ -1,59 +1,39 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ayşenur & Şaban | Wedding</title>
+<title>Ayşenur & Şaban</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<!-- LOADER -->
-
 <div id="loader">
-
-<div class="loader-circle"></div>
-
-<div class="loader-text">
-AS Wedding
+<div class="heart"></div>
+<p>AS Wedding</p>
 </div>
-
-</div>
-
-<!-- MUSIC -->
 
 <audio id="music" loop>
-
 <source src="music/music.mp3" type="audio/mpeg">
-
 </audio>
 
-<button id="musicBtn">
+<button id="musicBtn">🎵</button>
 
-🔊
-
-</button>
-
-<!-- HERO -->
-
-<section class="hero">
+<header class="hero">
 
 <div class="overlay"></div>
 
 <div class="hero-content">
 
-<p class="welcome">
+<p class="subtitle">
 Wedding Invitation
 </p>
 
@@ -73,7 +53,7 @@ Ayşenur
 
 </p>
 
-<button onclick="openInvitation()">
+<button id="openBtn">
 
 Davetiyeyi Aç
 
@@ -81,13 +61,11 @@ Davetiyeyi Aç
 
 </div>
 
-</section>
+</header>
 
-<!-- CONTENT -->
+<main id="mainContent">
 
-<section id="content">
-
-<section class="section glass">
+<section class="welcome card">
 
 <h2>
 
@@ -97,13 +75,13 @@ Hoş Geldiniz
 
 <p>
 
-Hayatımızın en özel gününde sizleri aramızda görmekten büyük mutluluk duyarız.
+Hayatımızın en anlamlı gününde sizleri de aramızda görmekten büyük mutluluk duyacağız.
 
 </p>
 
 </section>
 
-<section class="section glass">
+<section class="countSection card">
 
 <h2>
 
@@ -117,7 +95,7 @@ Geri Sayım
 
 <span id="days">00</span>
 
-<small>Gün</small>
+<p>Gün</p>
 
 </div>
 
@@ -125,7 +103,7 @@ Geri Sayım
 
 <span id="hours">00</span>
 
-<small>Saat</small>
+<p>Saat</p>
 
 </div>
 
@@ -133,7 +111,7 @@ Geri Sayım
 
 <span id="minutes">00</span>
 
-<small>Dakika</small>
+<p>Dakika</p>
 
 </div>
 
@@ -141,7 +119,7 @@ Geri Sayım
 
 <span id="seconds">00</span>
 
-<small>Saniye</small>
+<p>Saniye</p>
 
 </div>
 
@@ -149,7 +127,7 @@ Geri Sayım
 
 </section>
 
-<section class="section glass">
+<section class="story card">
 
 <h2>
 
@@ -159,17 +137,17 @@ Hikayemiz
 
 <p>
 
-İki farklı yol...
+Her güzel hikâye küçük bir tebessümle başlar...
 
-Tek bir kalpte buluştu.
+Bizim hikâyemiz de bir tebessümle başladı.
 
-Bugün ise en güzel hikâyemizin ilk sayfasını birlikte yazıyoruz.
+Şimdi ise hayatımızın en güzel "Evet"ini sizlerle birlikte söylemek istiyoruz.
 
 </p>
 
 </section>
 
-<section class="section glass">
+<section class="details card">
 
 <h2>
 
@@ -177,53 +155,29 @@ Düğün Bilgileri
 
 </h2>
 
-<div class="info">
+<div class="detailGrid">
 
-<div>
+<div class="detail">
 
-<h3>
+<h3>Tarih</h3>
 
-📅 Tarih
-
-</h3>
-
-<p>
-
-26 Temmuz 2026
-
-</p>
+<p>26 Temmuz 2026</p>
 
 </div>
 
-<div>
+<div class="detail">
 
-<h3>
+<h3>Saat</h3>
 
-🕗 Saat
-
-</h3>
-
-<p>
-
-20:00
-
-</p>
+<p>20:00</p>
 
 </div>
 
-<div>
+<div class="detail">
 
-<h3>
+<h3>Yer</h3>
 
-📍 Yer
-
-</h3>
-
-<p>
-
-Salon Adı
-
-</p>
+<p>Salon Adı</p>
 
 </div>
 
@@ -231,7 +185,7 @@ Salon Adı
 
 </section>
 
-<section class="section">
+<section class="gallerySection">
 
 <h2>
 
@@ -252,12 +206,15 @@ Galeri
 <img src="images/5.jpg">
 
 <img src="images/6.jpg">
+<img src="images/7.jpg">
+
+<img src="images/8.jpg">
 
 </div>
 
 </section>
 
-<section class="section glass">
+<section class="location card">
 
 <h2>
 
@@ -265,7 +222,13 @@ Konum
 
 </h2>
 
-<a class="mapButton" href="#" target="_blank">
+<p>
+
+Mutluluğumuza ortak olmak için sizleri bekliyoruz.
+
+</p>
+
+<a href="https://maps.google.com" target="_blank" class="btn">
 
 Haritada Aç
 
@@ -273,7 +236,7 @@ Haritada Aç
 
 </section>
 
-<section class="section glass">
+<section class="qrSection card">
 
 <h2>
 
@@ -281,7 +244,31 @@ QR Kod
 
 </h2>
 
-<img class="qr" src="images/qr.png">
+<img src="images/qr.png" class="qr">
+
+<p>
+
+Konumu telefonunuzla hızlıca açabilirsiniz.
+
+</p>
+
+</section>
+
+<section class="message card">
+
+<h2>
+
+Bir Not
+
+</h2>
+
+<p>
+
+Varlığınız, bu özel günde bizim için en değerli hediyedir.
+
+Sizlerle aynı mutluluğu paylaşmak dileğiyle...
+
+</p>
 
 </section>
 
@@ -289,7 +276,7 @@ QR Kod
 
 <h2>
 
-Ayşenur & Şaban
+Ayşenur <span>&</span> Şaban
 
 </h2>
 
@@ -301,13 +288,21 @@ Sevgiyle...
 
 </footer>
 
-</section>
+</main>
 
-<button id="topButton">
+<button id="topBtn">
 
 ↑
 
 </button>
+
+<div id="lightbox">
+
+<span id="closeLightbox">&times;</span>
+
+<img id="lightboxImg">
+
+</div>
 
 <script src="script.js"></script>
 
