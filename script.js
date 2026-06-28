@@ -1,0 +1,1 @@
+document.querySelector('button').onclick=()=>alert('Bu bölüm bir sonraki sürümde tam ekran animasyonlu davetiye olarak açılacak ❤️');
