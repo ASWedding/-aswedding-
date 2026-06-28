@@ -1,176 +1,316 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AS Wedding</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Ayşenur & Şaban | Wedding</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<div class="loading" id="loading">
-    <div class="loader"></div>
+<!-- LOADER -->
+
+<div id="loader">
+
+<div class="loader-circle"></div>
+
+<div class="loader-text">
+AS Wedding
 </div>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="music" loop>
+
+<source src="music/music.mp3" type="audio/mpeg">
+
+</audio>
+
+<button id="musicBtn">
+
+🔊
+
+</button>
+
+<!-- HERO -->
 
 <section class="hero">
 
-    <div class="overlay"></div>
+<div class="overlay"></div>
 
-    <div class="content">
+<div class="hero-content">
 
-        <p class="welcome">Wedding Invitation</p>
+<p class="welcome">
+Wedding Invitation
+</p>
 
-        <h1 class="names">
-            Ayşenur
-            <span>&</span>
-            Şaban
-        </h1>
+<h1>
 
-        <p class="date">
-            26 Temmuz 2026
-        </p>
+Ayşenur
 
-        <button class="open-btn" onclick="openInvite()">
-            Davetiyeyi Aç
-        </button>
+<span>&</span>
 
-    </div>
+Şaban
+
+</h1>
+
+<p class="date">
+
+26 Temmuz 2026
+
+</p>
+
+<button onclick="openInvitation()">
+
+Davetiyeyi Aç
+
+</button>
+
+</div>
+
+</section>
+
+<!-- CONTENT -->
+
+<section id="content">
+
+<section class="section glass">
+
+<h2>
+
+Hoş Geldiniz
+
+</h2>
+
+<p>
+
+Hayatımızın en özel gününde sizleri aramızda görmekten büyük mutluluk duyarız.
+
+</p>
 
 </section>
 
-<section id="invitation" class="invitation">
+<section class="section glass">
 
-    <div class="card">
+<h2>
 
-        <h2>Hoş Geldiniz</h2>
+Geri Sayım
 
-        <p>
-            Hayatımızın en özel gününde sizleri de aramızda görmekten büyük mutluluk duyarız.
-        </p>
+</h2>
 
-    </div>
+<div class="countdown">
 
-    <div class="countdown">
+<div>
 
-        <h2>Geri Sayım</h2>
+<span id="days">00</span>
 
-        <div class="timer">
+<small>Gün</small>
 
-            <div>
-                <span id="days">00</span>
-                <small>Gün</small>
-            </div>
+</div>
 
-            <div>
-                <span id="hours">00</span>
-                <small>Saat</small>
-            </div>
+<div>
 
-            <div>
-                <span id="minutes">00</span>
-                <small>Dakika</small>
-            </div>
+<span id="hours">00</span>
 
-            <div>
-                <span id="seconds">00</span>
-                <small>Saniye</small>
-            </div>
+<small>Saat</small>
 
-        </div>
+</div>
 
-    </div>
+<div>
 
-    <div class="story">
+<span id="minutes">00</span>
 
-        <h2>Hikayemiz</h2>
+<small>Dakika</small>
 
-        <p>
-            İki farklı yol, tek bir kalpte buluştu...
-            Sevgiyle başlayan bu yolculuğu sizlerle birlikte taçlandırmak istiyoruz.
-        </p>
+</div>
 
-    </div>
+<div>
 
-    <div class="details">
+<span id="seconds">00</span>
 
-        <h2>Düğün Bilgileri</h2>
+<small>Saniye</small>
 
-        <div class="detail-box">
+</div>
 
-            <h3>Tarih</h3>
-            <p>26  Temmuz  2026</p>
-
-        </div>
-
-        <div class="detail-box">
-
-            <h3>Saat</h3>
-            <p>20:00</p>
-
-        </div>
-
-        <div class="detail-box">
-
-            <h3>Yer</h3>
-            <p>Salon Adı</p>
-
-        </div>
-
-    </div>
-
-    <div class="gallery">
-
-        <h2>Galeri</h2>
-
-        <div class="photos">
-
-            <img src="images/1.jpg" alt="">
-            <img src="images/2.jpg" alt="">
-            <img src="images/3.jpg" alt="">
-            <img src="images/4.jpg" alt="">
-
-        </div>
-
-    </div>
-
-    <div class="location">
-
-        <h2>Konum</h2>
-
-        <a href="#" target="_blank" class="map-btn">
-            Haritada Aç
-        </a>
-
-    </div>
-
-    <div class="qr">
-
-        <h2>QR Kod</h2>
-
-        <img src="images/qr.png" alt="QR">
-
-    </div>
-
-    <footer>
-
-        <h3>Ayşenur & Şaban</h3>
-
-        <p>
-            Sevgiyle...
-        </p>
-
-    </footer>
+</div>
 
 </section>
+
+<section class="section glass">
+
+<h2>
+
+Hikayemiz
+
+</h2>
+
+<p>
+
+İki farklı yol...
+
+Tek bir kalpte buluştu.
+
+Bugün ise en güzel hikâyemizin ilk sayfasını birlikte yazıyoruz.
+
+</p>
+
+</section>
+
+<section class="section glass">
+
+<h2>
+
+Düğün Bilgileri
+
+</h2>
+
+<div class="info">
+
+<div>
+
+<h3>
+
+📅 Tarih
+
+</h3>
+
+<p>
+
+26 Temmuz 2026
+
+</p>
+
+</div>
+
+<div>
+
+<h3>
+
+🕗 Saat
+
+</h3>
+
+<p>
+
+20:00
+
+</p>
+
+</div>
+
+<div>
+
+<h3>
+
+📍 Yer
+
+</h3>
+
+<p>
+
+Salon Adı
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>
+
+Galeri
+
+</h2>
+
+<div class="gallery">
+
+<img src="images/1.jpg">
+
+<img src="images/2.jpg">
+
+<img src="images/3.jpg">
+
+<img src="images/4.jpg">
+
+<img src="images/5.jpg">
+
+<img src="images/6.jpg">
+
+</div>
+
+</section>
+
+<section class="section glass">
+
+<h2>
+
+Konum
+
+</h2>
+
+<a class="mapButton" href="#" target="_blank">
+
+Haritada Aç
+
+</a>
+
+</section>
+
+<section class="section glass">
+
+<h2>
+
+QR Kod
+
+</h2>
+
+<img class="qr" src="images/qr.png">
+
+</section>
+
+<footer>
+
+<h2>
+
+Ayşenur & Şaban
+
+</h2>
+
+<p>
+
+Sevgiyle...
+
+</p>
+
+</footer>
+
+</section>
+
+<button id="topButton">
+
+↑
+
+</button>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
